@@ -27,7 +27,7 @@ public class UnitTest1
     {
         int[] height = { 4, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
         int result = _test.Trap(height);
-        Assert.AreEqual(6, result);
+        Assert.AreEqual(14, result);
     }
     [TestMethod]
     public void StraightUpNOTHING()

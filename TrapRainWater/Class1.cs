@@ -4,27 +4,22 @@ public class Class1
     public int Trap(int[] height)
     {
         int result = 0;
-        int max = height[0];
-        List<int> numbHolder = new List<int>();
-        for (int i = 1; i < height.Length; i++)
+        int left = 0;
+        int right = height.Length - 1;
+        int leftMax = 0;
+        int rightMax = 0;
+        while (left < right)
         {
-            if (height[i] > max)
+            leftMax = Math.Max(leftMax, height[left]);
+            rightMax = Math.Max(rightMax, height[right]);
+            if (leftMax < rightMax) 
             {
-                max = height[i];
-                foreach (int num in numbHolder)
-                {
-                    Console.WriteLine($"Numbs being added: {num}, current index: {i}");
-                    result += num;
-                }
-                numbHolder.Clear();
-            }
-            else if (height[i] < max)
+                result += leftMax - height[left];
+                left++;
+            } else
             {
-                numbHolder.Add(max - height[i]);
-            }
-            else
-            {
-                continue;
+                result += rightMax - height[right];
+                right--;
             }
         }
         return result;
